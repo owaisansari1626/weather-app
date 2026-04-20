@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Weather</title>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-background"></div>
+    <div class="container">
+        
+        <header class="glass-panel">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="city-input" placeholder="Search for a city...">
+                <button id="search-btn">Search</button>
+            </div>
+            <div class="header-actions">
+                <button id="location-btn" title="Use My Location" class="icon-btn">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                </button>
+                <button id="theme-toggle" title="Toggle Dark/Light Mode" class="icon-btn">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <main id="main-content" class="hidden">
+            <section class="current-weather glass-panel">
+                <div class="weather-header">
+                    <div class="location-info">
+                        <h1 id="city-name">--</h1>
+                        <p id="current-date">--</p>
+                    </div>
+                </div>
+                <div class="weather-body">
+                    <div class="temp-container">
+                        <i id="weather-icon" class="fa-solid fa-sun large-icon" style="font-size: 5rem; color: var(--primary-color);"></i>
+                        <div class="temp-info">
+                            <span id="temperature">--°</span>
+                            <span id="description">--</span>
+                        </div>
+                    </div>
+                    <div class="weather-details glass-panel-inner">
+                        <div class="detail-item">
+                            <i class="fa-solid fa-droplet"></i>
+                            <div>
+                                <p class="detail-label">Humidity</p>
+                                <p class="detail-value" id="humidity">--%</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fa-solid fa-wind"></i>
+                            <div>
+                                <p class="detail-label">Wind Speed</p>
+                                <p class="detail-value" id="wind-speed">-- mph</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fa-solid fa-temperature-half"></i>
+                            <div>
+                                <p class="detail-label">Feels Like</p>
+                                <p class="detail-value" id="feels-like">--°</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="forecast glass-panel">
+                <h2>5-Day Forecast</h2>
+                <div class="forecast-container" id="forecast-container">
+                    <!-- Forecast items injected via JS -->
+                </div>
+            </section>
+        </main>
+        
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Gathering weather data...</p>
+        </div>
+
+        <div id="error-message" class="error-message hidden glass-panel">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <p id="error-text">City not found.</p>
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>
